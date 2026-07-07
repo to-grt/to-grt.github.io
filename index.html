@@ -1,0 +1,330 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Théo Gueuret — PhD Candidate in Computer Science</title>
+<meta name="description" content="Théo Gueuret — PhD candidate at Université de Lille (CRIStAL, FOX team). Graph deep learning for computer vision and dynamic facial expression recognition.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🕸️</text></svg>">
+<style>
+  :root {
+    --bg: #fdfdfc;
+    --bg-alt: #f4f4f1;
+    --text: #1c1c1e;
+    --muted: #5b5b63;
+    --accent: #1a1a8f;
+    --accent-soft: #e8e8f8;
+    --border: #e3e3de;
+    --card: #ffffff;
+    --shadow: 0 1px 3px rgba(0,0,0,.06), 0 4px 14px rgba(0,0,0,.04);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #121214;
+      --bg-alt: #1a1a1e;
+      --text: #e8e8ea;
+      --muted: #a0a0aa;
+      --accent: #9a9aff;
+      --accent-soft: #24244a;
+      --border: #2a2a30;
+      --card: #1c1c21;
+      --shadow: 0 1px 3px rgba(0,0,0,.4);
+    }
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.65;
+    font-size: 16.5px;
+  }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  .wrap { max-width: 860px; margin: 0 auto; padding: 0 1.4rem; }
+
+  nav {
+    position: sticky; top: 0; z-index: 10;
+    background: color-mix(in srgb, var(--bg) 88%, transparent);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--border);
+  }
+  nav .wrap { display: flex; align-items: center; gap: 1.2rem; height: 3.2rem; }
+  nav .brand { font-weight: 700; color: var(--text); margin-right: auto; }
+  nav a.item { color: var(--muted); font-size: .92rem; }
+  nav a.item:hover { color: var(--accent); text-decoration: none; }
+
+  header.hero { padding: 4.5rem 0 3rem; }
+  .hero h1 { font-size: 2.4rem; line-height: 1.15; letter-spacing: -.02em; }
+  .hero .role { color: var(--accent); font-weight: 600; margin-top: .4rem; font-size: 1.15rem; }
+  .hero .tagline { color: var(--muted); margin-top: 1rem; max-width: 40em; }
+  .links { display: flex; flex-wrap: wrap; gap: .6rem; margin-top: 1.5rem; }
+  .links a {
+    display: inline-flex; align-items: center; gap: .4rem;
+    padding: .42rem .9rem; border: 1px solid var(--border); border-radius: 999px;
+    font-size: .9rem; color: var(--text); background: var(--card); box-shadow: var(--shadow);
+  }
+  .links a:hover { border-color: var(--accent); color: var(--accent); text-decoration: none; }
+  .links a.primary { background: var(--accent); color: #fff; border-color: var(--accent); }
+  .links a.primary:hover { opacity: .9; color: #fff; }
+
+  section { padding: 2.6rem 0; }
+  section + section { border-top: 1px solid var(--border); }
+  h2 {
+    font-size: 1.05rem; text-transform: uppercase; letter-spacing: .12em;
+    color: var(--accent); margin-bottom: 1.4rem; font-weight: 700;
+  }
+  h3 { font-size: 1.08rem; font-weight: 650; }
+  p + p { margin-top: .9rem; }
+  .muted { color: var(--muted); }
+  .small { font-size: .9rem; }
+
+  .timeline { display: grid; gap: 1.5rem; }
+  .entry { display: grid; grid-template-columns: 9.5rem 1fr; gap: 1rem; }
+  .entry .when { color: var(--muted); font-size: .9rem; padding-top: .15rem; white-space: nowrap; }
+  .entry .what .org { color: var(--muted); font-size: .95rem; }
+  .entry .what p { margin-top: .35rem; font-size: .95rem; color: var(--muted); }
+  @media (max-width: 620px) {
+    .entry { grid-template-columns: 1fr; gap: .15rem; }
+    .hero h1 { font-size: 1.9rem; }
+  }
+
+  ul.pubs { list-style: none; display: grid; gap: 1.1rem; }
+  ul.pubs li { padding-left: 1.1rem; border-left: 3px solid var(--accent-soft); }
+  ul.pubs .title { font-weight: 600; }
+  ul.pubs .venue { color: var(--muted); font-size: .93rem; margin-top: .1rem; }
+  .badge {
+    display: inline-block; font-size: .74rem; font-weight: 600;
+    background: var(--accent-soft); color: var(--accent);
+    padding: .1rem .55rem; border-radius: 999px; margin-left: .35rem; vertical-align: middle;
+  }
+
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(245px, 1fr)); gap: 1rem; }
+  .card {
+    background: var(--card); border: 1px solid var(--border); border-radius: 12px;
+    padding: 1.1rem 1.2rem; box-shadow: var(--shadow);
+    display: flex; flex-direction: column; gap: .45rem;
+  }
+  .card h3 a { color: var(--text); }
+  .card h3 a:hover { color: var(--accent); text-decoration: none; }
+  .card p { font-size: .92rem; color: var(--muted); flex: 1; }
+  .card .tags { display: flex; flex-wrap: wrap; gap: .35rem; }
+  .tag {
+    font-size: .72rem; color: var(--muted); border: 1px solid var(--border);
+    padding: .05rem .5rem; border-radius: 999px;
+  }
+
+  footer { border-top: 1px solid var(--border); padding: 2.2rem 0 3rem; color: var(--muted); font-size: .9rem; }
+  footer .wrap { display: flex; flex-wrap: wrap; gap: 1rem; justify-content: space-between; }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <span class="brand">Théo Gueuret</span>
+    <a class="item" href="#research">Research</a>
+    <a class="item" href="#publications">Publications</a>
+    <a class="item" href="#projects">Projects</a>
+    <a class="item" href="#contact">Contact</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <h1>Théo Gueuret</h1>
+    <div class="role">PhD Candidate in Computer Science · Université de Lille</div>
+    <p class="tagline">
+      I work on <strong>graph deep learning for computer vision</strong> at the
+      <a href="https://www.cristal.univ-lille.fr/">CRIStAL</a> laboratory (FOX team), where I design
+      lightweight, interpretable spatio-temporal graph neural networks for dynamic facial
+      expression recognition. PhD expected September 2026.
+    </p>
+    <div class="links">
+      <a class="primary" href="assets/Theo_Gueuret_CV_en.pdf">Download CV (PDF)</a>
+      <a href="assets/Theo_Gueuret_CV_fr.pdf">CV en français</a>
+      <a href="https://github.com/to-grt">GitHub</a>
+      <a href="https://www.linkedin.com/in/theogueuret">LinkedIn</a>
+      <a href="https://scholar.google.com/citations?user=fqZl0Z8AAAAJ">Google Scholar</a>
+      <a href="mailto:tgueuret@live.fr">Email</a>
+    </div>
+  </div>
+</header>
+
+<section id="research">
+  <div class="wrap">
+    <h2>About &amp; Research</h2>
+    <p>
+      My research asks a simple question: do we really need huge image-based models to read
+      emotions from faces? Instead of processing full video frames, I represent faces as
+      <strong>graphs of facial landmarks</strong> and model their dynamics with
+      <strong>spatio-temporal graph neural networks</strong> — relational convolutions,
+      multi-branch fusion of landmark and muscle information, and learned graph topologies.
+    </p>
+    <p>
+      A systematic ablation of the whole pipeline across six benchmarks (DFEW, FERV39K, AFEW,
+      MAFW, Oulu-CASIA, CK+) with subject-independent cross-validation revealed which components
+      actually matter — inter-ocular normalization alone brings +18.4 points of accuracy, and a
+      curated subset of 53 landmarks outperforms MediaPipe's full 468. The resulting models are
+      <strong>light and interpretable</strong>: GradCAM-style node-importance analyses map
+      directly onto FACS action units, offering an efficient alternative to large pre-trained
+      image models.
+    </p>
+    <div class="timeline" style="margin-top:1.8rem">
+      <div class="entry">
+        <div class="when">2023 — present</div>
+        <div class="what">
+          <h3>PhD Candidate</h3>
+          <div class="org">Université de Lille — CRIStAL, FOX team · Lille, France</div>
+          <p>Graph deep learning for dynamic facial expression recognition. Best methodological
+          paper nominee at EGC 2026, with an invited extension to Elsevier's Data &amp; Knowledge
+          Engineering (Q1).</p>
+        </div>
+      </div>
+      <div class="entry">
+        <div class="when">2023</div>
+        <div class="what">
+          <h3>Deep Learning R&amp;D Engineer — graduation internship</h3>
+          <div class="org">Capgemini Engineering · Meudon, France</div>
+          <p>Multimodal biometric authentication combining siamese networks, CNN and LSTM
+          autoencoders. Published in ELCVIA.</p>
+        </div>
+      </div>
+      <div class="entry">
+        <div class="when">2022</div>
+        <div class="what">
+          <h3>Research Intern — Computer Vision</h3>
+          <div class="org">University of Nevada, Las Vegas (UNLV) · USA</div>
+          <p>Semi-supervised CNNs for audio scene classification with limited labels; presented
+          at IEEE SEC 2022.</p>
+        </div>
+      </div>
+      <div class="entry">
+        <div class="when">2018 — 2023</div>
+        <div class="what">
+          <h3>Engineering degree (MSc) — AI &amp; Data Science</h3>
+          <div class="org">ESIEE Paris — Université Gustave Eiffel</div>
+          <p>Ranked 2nd of 41 in final year; exchange semester at Chalmers University of
+          Technology, Sweden.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="publications">
+  <div class="wrap">
+    <h2>Publications</h2>
+    <ul class="pubs">
+      <li>
+        <div class="title">Dynamic Facial Expression Recognition via Spatio-temporal Graph Networks
+          <span class="badge">Journal · under review</span></div>
+        <div class="venue">Data &amp; Knowledge Engineering, Elsevier (Q1), 2026 — invited
+          extension following the EGC 2026 nomination</div>
+      </li>
+      <li>
+        <div class="title">Reconnaissance d'expressions faciales dynamiques par réseaux de graphes
+          spatio-temporels <span class="badge">Best methodological paper nominee</span></div>
+        <div class="venue">EGC 2026, Anglet, France</div>
+      </li>
+      <li>
+        <div class="title"><a href="https://doi.org/10.1109/CBMI62980.2024.10858877">A Survey on
+          Graph Deep Representation Learning for Facial Expression Recognition</a></div>
+        <div class="venue">CBMI 2024 · DOI: 10.1109/CBMI62980.2024.10858877</div>
+      </li>
+      <li>
+        <div class="title"><a href="https://elcvia.cvc.uab.cat/article/view/1811">A Multimodal
+          Biometric Authentication System: Using of Autoencoders and Siamese Networks for
+          Enhanced Security</a></div>
+        <div class="venue">ELCVIA — Electronic Letters on Computer Vision and Image Analysis, 2024</div>
+      </li>
+      <li>
+        <div class="title"><a href="https://doi.org/10.1109/SEC54971.2022.00044">SlideCNN: Deep
+          Learning for Auditory Spatial Scenes with Limited Annotated Data</a></div>
+        <div class="venue">IEEE/ACM Symposium on Edge Computing (SEC) 2022 · DOI:
+          10.1109/SEC54971.2022.00044</div>
+      </li>
+    </ul>
+    <p class="small muted" style="margin-top:1.2rem">
+      Full list on <a href="https://scholar.google.com/citations?user=fqZl0Z8AAAAJ">Google Scholar</a>.
+    </p>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="wrap">
+    <h2>Projects</h2>
+    <div class="grid">
+      <div class="card">
+        <h3><a href="https://github.com/to-grt/Legum">Legum</a></h3>
+        <p>A chess engine written from scratch — move generation, search and evaluation, built
+        for the love of the game.</p>
+        <div class="tags"><span class="tag">chess</span><span class="tag">engine</span></div>
+      </div>
+      <div class="card">
+        <h3><a href="https://github.com/to-grt/GL">GL</a></h3>
+        <p>Spatio-temporal graph learning framework for facial expression recognition — the
+        second part of my PhD work, refactored and cleaned up.</p>
+        <div class="tags"><span class="tag">PyTorch Geometric</span><span class="tag">GNN</span></div>
+      </div>
+      <div class="card">
+        <h3><a href="https://github.com/to-grt/Graph_DL_FER">Graph_DL_FER</a></h3>
+        <p>First part of my PhD work: graph deep learning pipelines for facial expression
+        recognition benchmarks.</p>
+        <div class="tags"><span class="tag">research code</span><span class="tag">FER</span></div>
+      </div>
+      <div class="card">
+        <h3><a href="https://github.com/to-grt/abandoned_luggage">Abandoned luggage detection</a></h3>
+        <p>Real-time detection of abandoned luggage in complex environments, using YOLO object
+        detection and IoU-based multi-target tracking.</p>
+        <div class="tags"><span class="tag">YOLO</span><span class="tag">tracking</span></div>
+      </div>
+      <div class="card">
+        <h3><a href="https://github.com/to-grt/slide_audio_scene">SlideCNN</a></h3>
+        <p>Semi-supervised deep learning for auditory spatial scenes with limited annotated data
+        — research code behind the IEEE SEC 2022 paper.</p>
+        <div class="tags"><span class="tag">audio</span><span class="tag">semi-supervised</span></div>
+      </div>
+      <div class="card">
+        <h3><a href="https://github.com/to-grt/projet_sandy">Projet Sandy</a></h3>
+        <p>Robotic rig and software to detect, identify and quantify micro-plastics in sand.
+        Winner of the Health–Environment–Disability prize, ESIEE Projects Day 2021.</p>
+        <div class="tags"><span class="tag">robotics</span><span class="tag">award winner</span></div>
+      </div>
+    </div>
+    <p class="small muted" style="margin-top:1.2rem">
+      More on <a href="https://github.com/to-grt?tab=repositories">GitHub</a> — including a
+      Discord bot, an idle game, and other experiments.
+    </p>
+  </div>
+</section>
+
+<section id="beyond">
+  <div class="wrap">
+    <h2>Beyond research</h2>
+    <p>
+      I play competitive <strong>chess</strong> (~1700 Elo, Lille Métropole Chess) and
+      <strong>badminton</strong> (LUC Badminton), and I'm organizing <strong>Chessminton</strong>
+      — the first Lille Open (2026) of a hybrid chess/badminton format, jointly with LUC and LMC.
+      Otherwise you'll find me cycling or running around Lille.
+    </p>
+  </div>
+</section>
+
+<footer id="contact">
+  <div class="wrap">
+    <div>
+      <strong style="color:var(--text)">Get in touch</strong><br>
+      <a href="mailto:tgueuret@live.fr">tgueuret@live.fr</a> ·
+      <a href="https://github.com/to-grt">GitHub</a> ·
+      <a href="https://www.linkedin.com/in/theogueuret">LinkedIn</a> ·
+      <a href="https://scholar.google.com/citations?user=fqZl0Z8AAAAJ">Scholar</a>
+    </div>
+    <div>Lille, France · © 2026 Théo Gueuret</div>
+  </div>
+</footer>
+
+</body>
+</html>
